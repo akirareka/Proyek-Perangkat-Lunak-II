@@ -34,6 +34,11 @@ class MapController extends Controller
         foreach ($rute as $r) {
             $graph->add($r->start, $r->stop, $r->distance,$r->price);
             }
+        if ($request->awal == $request->akhir) {
+            return view('welcome')
+            ->with('stops',$stops)
+            ->with('successMsg','Titik awal tidak bisa sama dengan tujuan');
+        }
         $route = $graph->search($request->awal, $request->akhir); // -> Masukkan titik awal , tujuan dari dropdown pake node di database. CASE SENSITIVE
         $cost  = $graph->cost($route);   
         $price = $graph->price($route);

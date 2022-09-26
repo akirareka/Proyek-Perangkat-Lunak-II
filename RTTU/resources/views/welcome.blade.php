@@ -40,17 +40,20 @@
          </select>       
         </div>
 
-        <div id="map"></div>
+        <div id="map"></div><br>
+        @if(!empty($successMsg))
+         <div class="alert alert-success"> {{ $successMsg }}</div>
+        @endif
         <form action="/routes" method="GET">
 
-         <select name="awal" id="" >
+         <select name="awal" id="" required>
             <option value="">Pilih start</option>
             @foreach($stops as $s)
             <option value="{{$s->name}}">{{$s->name}}</option>
             @endforeach
          </select>
         
-         <select name="akhir" id="">
+         <select name="akhir" id="" required>
             <option value="">Pilih tujuan</option>
             @foreach($stops as $s)
             <option value="{{$s->name}}">{{$s->name}}</option>
@@ -59,7 +62,6 @@
         
          <button type="submit">Cari rute</button>
         </form>
-        <a href="/routes">RUTE DU KE UNPAD NANGOR(CLICK HERE)</a>
 
 
     </body>

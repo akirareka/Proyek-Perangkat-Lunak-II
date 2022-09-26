@@ -18,12 +18,7 @@ class DatabaseSeeder extends Seeder
     {
 
         
-        Routes::create([ //udah otomatis bisa untuk bulak balik
-            'start' => "DU",
-            'stop' => "Jatos",
-            'distance' => "2",
-            'price' => "6000"
-        ]);
+        
         Map::create([
             'name' => "DU",
             'address' => "Dipatiukur no bla bla",
@@ -35,6 +30,12 @@ class DatabaseSeeder extends Seeder
             'address' => "Jatinangor bla bla",
             'lat' => "-6.933951",
             'lng' => "107.771266"
+        ]);
+        Routes::create([ //udah otomatis bisa untuk bulak balik
+            'start' => "DU",
+            'stop' => "Jatos",
+            'distance' => "21",
+            'price' => "10000"
         ]);
 
         

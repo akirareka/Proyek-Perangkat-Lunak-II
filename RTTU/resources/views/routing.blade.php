@@ -55,6 +55,24 @@
         echo '<br>';
         echo 'Total harga : Rp ' . number_format($price,2,',','.');
         ?>
+        <form action="/routes" method="GET">
+
+        <select name="awal" id="" required>
+        <option value="">Pilih start</option>
+        @foreach($stops as $s)
+        <option value="{{$s->name}}">{{$s->name}}</option>
+        @endforeach
+        </select>
+
+        <select name="akhir" id="" required>
+        <option value="">Pilih tujuan</option>
+        @foreach($stops as $s)
+        <option value="{{$s->name}}">{{$s->name}}</option>
+        @endforeach
+        </select>
+
+        <button type="submit">Cari rute</button>
+        </form>
 
 
     </body>
@@ -80,7 +98,7 @@
         addMarker(item.lat, item.lng, item.name);
      });
         
-     L.control.locate().addTo(map);
+     L.control.locate({flyTo:true,duration:2.5}).addTo(map);
      // Fitur click memunculkan coordinate
      var popup = L.popup();
      function onMapClick(e) {
@@ -95,7 +113,7 @@
          if(item.id == id)
              map.flyTo([item.lat, item.lng], 18,{
              animate:true,
-             duration:3
+             duration:2.5
             });
          });
      }
