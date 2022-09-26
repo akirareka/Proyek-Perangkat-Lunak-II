@@ -26,7 +26,7 @@ class MapController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function routing()
+    public function routing(Request $request)
     {
         $graph = Graph::create();
         $stops= Map::get();
@@ -34,7 +34,7 @@ class MapController extends Controller
         foreach ($rute as $r) {
             $graph->add($r->start, $r->stop, $r->distance,$r->price);
             }
-        $route = $graph->search('DU', 'UNPAD'); // -> Masukkan titik awal , tujuan dari dropdown pake node di database. CASE SENSITIVE
+        $route = $graph->search($request->awal, $request->akhir); // -> Masukkan titik awal , tujuan dari dropdown pake node di database. CASE SENSITIVE
         $cost  = $graph->cost($route);   
         $price = $graph->price($route);
 

@@ -30,6 +30,17 @@
     </head>
     <body>
         
+    <div>
+        <a href="/">Home</a>
+        <br>
+         <t>Cari Lokasi</t><br>
+         <select name="" id="" onchange="cari(this.value)">
+         <option value="">Pilih lokasi</option>
+            @foreach($stops as $s)
+            <option value="{{$s->id}}">{{$s->name}}</option>
+            @endforeach
+         </select>       
+        </div>
         <div id="map"></div>
         <?php
         echo 'Rute terbaik adalah : ';
@@ -52,34 +63,41 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
 
     <script type="text/javascript">
-         var app = <?php echo json_encode($stops); ?>;
-         console.log(app);
         
-        var map = L.map('map').setView([-6.935118, 107.766995], 15);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+     var map = L.map('map').setView([-6.935118, 107.766995], 15);
+     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         maxZoom: 19,
+         attribution: '© OpenStreetMap'
+     }).addTo(map);
 
-        function addMarker(lat, lng, place){
+     function addMarker(lat, lng, place){
          L.marker([lat, lng]).addTo(map)
          .bindPopup(place);
-        }
-        var coordinates = {{ Js::from($stops) }};
+     }
+     var coordinates = {{ Js::from($stops) }};
         
-        coordinates.forEach(function(item){
+     coordinates.forEach(function(item){
         addMarker(item.lat, item.lng, item.name);
-    });
+     });
         
-        L.control.locate().addTo(map);
-        // Fitur click memunculkan coordinate
-        var popup = L.popup();
-        function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
-                .openOn(map);
-        }
-        map.on('contextmenu', onMapClick);
+     L.control.locate().addTo(map);
+     // Fitur click memunculkan coordinate
+     var popup = L.popup();
+     function onMapClick(e) {
+         popup
+             .setLatLng(e.latlng)
+             .setContent("You clicked the map at " + e.latlng.toString())
+             .openOn(map);
+     }
+     map.on('contextmenu', onMapClick);
+     function cari(id){
+        coordinates.forEach(function(item){
+         if(item.id == id)
+             map.flyTo([item.lat, item.lng], 18,{
+             animate:true,
+             duration:3
+            });
+         });
+     }
 </script>
 </html>

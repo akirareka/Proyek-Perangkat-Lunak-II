@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Routes;
+use App\Models\Map;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,35 +16,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        Routes::create([
+        
+        Routes::create([ //udah otomatis bisa untuk bulak balik
             'start' => "DU",
-            'stop' => "Arcamanik",
+            'stop' => "Jatos",
             'distance' => "2",
             'price' => "6000"
         ]);
-        Routes::create([
-            'start' => "Arcamanik",
-            'stop' => "UBER",
-            'distance' => "2",
-            'price' => "6000"
+        Map::create([
+            'name' => "DU",
+            'address' => "Dipatiukur no bla bla",
+            'lat' => "-6.892946",
+            'lng' => "107.618074"
         ]);
-        Routes::create([
-            'start' => "UBER",
-            'stop' => "CIBIRU",
-            'distance' => "2",
-            'price' => "6000"
+        Map::create([
+            'name' => "Jatos",
+            'address' => "Jatinangor bla bla",
+            'lat' => "-6.933951",
+            'lng' => "107.771266"
         ]);
-        Routes::create([
-            'start' => "CIBIRU",
-            'stop' => "UNPAD",
-            'distance' => "2",
-            'price' => "6000"
-        ]);
+
+        
     }
 }
