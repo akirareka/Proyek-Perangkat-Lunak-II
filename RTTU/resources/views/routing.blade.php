@@ -5,12 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
-        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
         <!-- Leaflet js css -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="crossorigin=""/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+        
+        
+
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -31,7 +31,19 @@
     <body>
         
         <div id="map"></div>
-    
+        <?php
+        echo 'Rute terbaik adalah : ';
+        foreach($route as $key => $r) {
+            echo $r;
+            if ($key != array_key_last($route)) {
+                echo ' -> ';
+            }
+        }
+        echo '<br>';
+        echo 'Total jarak : ' . $cost . ' KM';
+        echo '<br>';
+        echo 'Total harga : Rp ' . number_format($price,2,',','.');
+        ?>
 
 
     </body>
@@ -40,13 +52,14 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
 
     <script type="text/javascript">
+         var app = <?php echo json_encode($stops); ?>;
+         console.log(app);
         
         var map = L.map('map').setView([-6.935118, 107.766995], 15);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
-
 
         function addMarker(lat, lng, place){
          L.marker([lat, lng]).addTo(map)
@@ -57,7 +70,7 @@
         coordinates.forEach(function(item){
         addMarker(item.lat, item.lng, item.name);
     });
-
+        
         L.control.locate().addTo(map);
         // Fitur click memunculkan coordinate
         var popup = L.popup();
