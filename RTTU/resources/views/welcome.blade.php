@@ -24,8 +24,8 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
-            #map { height: 600px; 
-                width:800px; }
+            #map { height: 900px; 
+                width:1600px; }
         </style>
     </head>
     <body>

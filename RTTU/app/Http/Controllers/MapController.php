@@ -29,7 +29,7 @@ class MapController extends Controller
     public function routing(Request $request)
     {
         $graph = Graph::create();
-        $stops= Map::get();
+        $stops= Map::orderBy('name')->get();
         $rute = Routes::get();
         foreach ($rute as $r) {
             $graph->add($r->start, $r->stop, $r->distance,$r->price);

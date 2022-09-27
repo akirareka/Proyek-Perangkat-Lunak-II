@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->ipAddress('lat');
             $table->ipAddress('lng');
+            $table->ipAddress('kendaraan');
         });
     }
 

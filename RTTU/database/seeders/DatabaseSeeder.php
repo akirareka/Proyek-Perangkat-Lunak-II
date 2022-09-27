@@ -16,20 +16,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-        
-        
+    
         Map::create([
             'name' => "DU",
             'address' => "Dipatiukur no bla bla",
             'lat' => "-6.892946",
-            'lng' => "107.618074"
+            'lng' => "107.618074",
+            'kendaraan' => "Bus"
         ]);
         Map::create([
             'name' => "Jatos",
             'address' => "Jatinangor bla bla",
             'lat' => "-6.933951",
-            'lng' => "107.771266"
+            'lng' => "107.771266",
+            'kendaraan' => "Bus"
+        ]);
+        Map::create([
+            'name' => "Baltos",
+            'address' => "Jatinangor bla bla",
+            'lat' => "-6.898862",
+            'lng' => "107.609295",
+            'kendaraan' => "Shuttle"
         ]);
         Routes::create([ //udah otomatis bisa untuk bulak balik
             'start' => "DU",
@@ -38,6 +45,5 @@ class DatabaseSeeder extends Seeder
             'price' => "10000"
         ]);
 
-        
     }
 }
