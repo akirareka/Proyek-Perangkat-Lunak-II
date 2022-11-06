@@ -13,7 +13,8 @@
          .bindPopup(
             "Nama : " + place + "<br>"+
             "<button onclick ='return dariSini("+lat+","+lng+")'>Mulai di sini</button><br>"+
-         "<button onclick ='return keSini("+lat+","+lng+")'>Pergi ke sini</button>"
+         "<button onclick ='return keSini("+lat+","+lng+")'>Pergi ke sini</button>"+
+         "<button onclick ='return addStops("+lat+","+lng+")'>Tambah pemberhentian</button><br>"
          );
      }
      coordinates.forEach(function(item){
@@ -26,6 +27,15 @@
 
      }
 
+     function addStops(lat,lng){
+        var i = 1;
+        var latLng=L.latLng(lat,lng);
+        control.spliceWaypoints(i, 0, latLng);
+        i+=1;
+        console.log(i)
+
+     }
+
      function keSini(lat,lng){
         var latLng=L.latLng(lat,lng);
         control.spliceWaypoints(control.getWaypoints().length - 1, 1, latLng);
@@ -33,9 +43,24 @@
      }
         
      // fitur melihat lokasi user
-     L.control.locate().addTo(map);
+     var lc = L.control.locate({
+        strings : {
+            popup:"Fucking hell"}
+        }).addTo(map);
+     var lcPopup = L.popup();
+     function fromCurLoc(e) {
+        var coords = e.latlng
+        lcPopup
+            .setLatLng(e.latlng)
+            .setContent("<button onclick ='return addStops("+coords.lat+","+coords.lng+")'>Mulai di sini</button><br>")
+            .openOn(map);
+    }
+        
+     lc.start();
+     map.on('click', fromCurLoc);
+     console.log(L.control.locate())
 
-     // Fitur click untuk memunculkan coordinate
+     // Fitur click kanan untuk memunculkan coordinate
      var popup = L.popup();
      function onMapClick(e) {
          popup
@@ -43,8 +68,10 @@
              .setContent("You clicked the map at " + e.latlng.toString())
              .openOn(map);
      }
-     //fitur melihat lokasi marker
      map.on('contextmenu', onMapClick);
+
+     //fitur melihat lokasi marker dari database
+     
      function cari(id){
         coordinates.forEach(function(item){
          if(item.id == id)
@@ -64,11 +91,17 @@
      //fitur routing
      var control = L.Routing.control({
         waypoints: [
-            L.latLng(-6.892946, 107.618074),
+            // L.latLng(-6.936436, 107.765185),
             //  L.latLng(-6.933951, 107.771266)
             
         ],
-        routewhileDragging : true,
+        createMarker: function (i, wp, nWps){
+           
+            return L.marker(wp.latLng, {icon: new L.DivIcon({
+                html: 
+                    '<div> <img style="" src="https://unpkg.com/leaflet@1.9.2/dist/images/marker-icon.png"> <span style="font-size:200%;" >'+String.fromCharCode(65+i)+'</span> </div>'
+            }) });     
+    },
         geocoder: L.Control.Geocoder.nominatim()
         });
         control.addTo(map);
