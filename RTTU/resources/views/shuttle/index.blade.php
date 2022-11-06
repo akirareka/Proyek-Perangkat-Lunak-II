@@ -6,11 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
         <!-- Leaflet js css -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="crossorigin=""/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
-        
-        
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 
 
         <!-- Fonts -->
@@ -25,100 +28,61 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
-            #map { height: 600px; 
-                width:800px; }
+            #map { height: 700px; 
+                width:1600px;
+            margin-left: 150px; }
         </style>
     </head>
     @section('content')
     <body>
         
-    <div>
-        <a href="/">Home</a>
-        <br>
+        <div>
          <t>Cari Lokasi</t><br>
          <select name="" id="" onchange="cari(this.value)">
-         <option value="">Pilih lokasi</option>
+            <option value="">Pilih lokasi</option>
             @foreach($stops as $s)
             <option value="{{$s->id}}">{{$s->name}}</option>
             @endforeach
          </select>       
         </div>
-        <div id="map"></div>
-        <?php
-        echo 'Rute terbaik adalah : ';
-        foreach($route as $key => $r) {
-            echo $r;
-            if ($key != array_key_last($route)) {
-                echo ' -> ';
-            }
-        }
-        echo '<br>';
-        echo 'Total jarak : ' . $cost . ' KM';
-        echo '<br>';
-        echo 'Total harga : Rp ' . number_format($price,2,',','.');
-        ?>
-        <form action="/routes" method="GET">
 
-        <select name="awal" id="" required>
-        <option value="">Pilih start</option>
-        @foreach($stops as $s)
-        <option value="{{$s->name}}">{{$s->name}}</option>
-        @endforeach
-        </select>
+        <div id="map"></div><br>
+        @if(!empty($successMsg))
+         <div class="alert alert-success"> {{ $successMsg }}</div>
+        @endif
+        <!-- <form action="/routes" method="GET">
 
-        <select name="akhir" id="" required>
-        <option value="">Pilih tujuan</option>
-        @foreach($stops as $s)
-        <option value="{{$s->name}}">{{$s->name}}</option>
-        @endforeach
-        </select>
-
-        <button type="submit">Cari rute</button>
-        </form>
+         <select name="awal" id="" required>
+            <option value="">Pilih start</option>
+            @foreach($stops as $s)
+            <option value="{{$s->name}}">{{$s->name}}</option>
+            @endforeach
+         </select>
+        
+         <select name="akhir" id="" required>
+            <option value="">Pilih tujuan</option>
+            @foreach($stops as $s)
+            <option value="{{$s->name}}">{{$s->name}}</option>
+            @endforeach
+         </select>
+        
+         <button type="submit">Cari rute</button>
+        </form> -->
 
 
     </body>
+   
     <!-- Leaflet js  -->
     <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script>var coordinates = <?php echo json_encode($stops); ?>;</script>
+    <script type="text/javascript" src="{{ asset('js/leaflet.js') }}"></script>
+           
 
-    <script type="text/javascript">
-        
-     var map = L.map('map').setView([-6.935118, 107.766995], 15);
-     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-         maxZoom: 19,
-         attribution: '© OpenStreetMap'
-     }).addTo(map);
-
-     function addMarker(lat, lng, place){
-         L.marker([lat, lng]).addTo(map)
-         .bindPopup(place);
-     }
-     var coordinates = <?php echo json_encode($stops); ?>;
-        
-     coordinates.forEach(function(item){
-        addMarker(item.lat, item.lng, item.name);
-     });
-        
-     L.control.locate({flyTo:true,duration:2.5}).addTo(map);
-     // Fitur click memunculkan coordinate
-     var popup = L.popup();
-     function onMapClick(e) {
-         popup
-             .setLatLng(e.latlng)
-             .setContent("You clicked the map at " + e.latlng.toString())
-             .openOn(map);
-     }
-     map.on('contextmenu', onMapClick);
-     function cari(id){
-        coordinates.forEach(function(item){
-         if(item.id == id)
-             map.flyTo([item.lat, item.lng], 18,{
-             animate:true,
-             duration:2.5
-            });
-         });
-     }
-</script>
+    
 @endsection
+
 </html>
+

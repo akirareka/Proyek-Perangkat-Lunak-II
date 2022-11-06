@@ -1,0 +1,143 @@
+body{
+    padding: 0;
+    margin: 0;
+    background: #FAF2DA;
+}
+
+.navbar {
+    background-color: white;
+}
+.navbar .LogoRRTU img {
+
+    height: 30%;
+    width: 30%;
+    margin-left: 10%;
+}
+
+.navbar .content a {
+
+    padding:0;
+    font-size: 100%;
+    font-family: 'Roboto';
+    color: black;
+    margin-left: 5%;
+}
+
+.box1-1 {
+    width: 100%;
+    height: 400%;
+    padding: 2%;
+    background: #FFD873;
+    border-radius: 30px;
+    margin-top: 30%;
+}
+
+.box2-2 {
+    width: 100%;
+    height: 400%;
+    background: white;
+    border-radius: 30px;
+    padding: 5%;
+    margin-top: 2%;
+}
+
+.box2-2 button {
+    background-color: #FAF2DA;
+    color: black;
+    margin-top: 1%;
+    border-radius: 10px;
+}
+
+.box3-3 {
+    width: 100%;
+    height: 400%;
+    padding: 4%;
+    background: #FFD873;
+    border-radius: 30px;
+    margin-top: 2%;
+}
+footer {
+    background-color: #777;
+    text-align: center;
+    color: white;
+    width: 100.8%;
+}
+
+section {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.mid-RRTU {
+    float: left;
+    background: white;
+    margin-left: 5%;
+    /* margin-top: 2.5%; */
+    border-radius: 30px;
+    width: 15%;
+    margin-right: 5%;
+    padding: 1%;
+}
+
+.mid-RRTU img {
+    height: 100%;
+    width: 100%;
+
+}
+
+article {
+    flex: 4;
+    background-color: white;
+    padding: 10px;
+}
+
+.RRTU-Penjelasan {
+    border-radius: 30px;
+}
+
+.unpad1 {
+    float: left;
+}
+.unpad1 img {
+    height: 100%;
+    width: 50%;
+}
+.unpad2 {
+    float: right;
+}
+
+.unpad2 img {
+    height: 100%;
+    width: 50%;
+}
+
+.shuttel img {
+
+}
+
+.biskota img {
+    height: 50%;
+    width: 50%;
+    margin-top: 10%;
+}
+
+.box3-3 button {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.box3-3 .biskota button {
+    margin-top: 2%;
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+footer p {
+    text-align: justify;
+    padding: 0;
+    margin-bottom: 0;
+    margin-left: 40%;
+    
+}
+
+

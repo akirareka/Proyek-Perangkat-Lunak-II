@@ -14,10 +14,17 @@ class MapController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function shuttle()
     {
-        $stops= Map::get();
-        return view('welcome')
+        $stops= Map::where('kendaraan','Shuttle')->get();
+        return view('shuttle.index')
+        ->with('stops',$stops);
+    }
+
+    public function bis()
+    {
+        $stops= Map::where('kendaraan','Bus')->get();
+        return view('bus.index')
         ->with('stops',$stops);
     }
 
@@ -50,59 +57,5 @@ class MapController extends Controller
         ->with('stops',$stops);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Map  $map
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Map $map)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Map  $map
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Map $map)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Map  $map
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Map $map)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Map  $map
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Map $map)
-    {
-        //
-    }
+ 
 }

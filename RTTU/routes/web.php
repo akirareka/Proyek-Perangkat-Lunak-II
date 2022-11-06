@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,7 @@ use App\Http\Controllers\MapController;
 |
 */
 
-Route::get('/', [MapController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/bus', [MapController::class, 'bis']);
+Route::get('/shuttle', [MapController::class, 'shuttle']);
 Route::get('/routes', [MapController::class, 'routing']);

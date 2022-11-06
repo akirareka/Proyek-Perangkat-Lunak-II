@@ -1,3 +1,4 @@
+@extends('layouts.navbar')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -11,6 +12,8 @@
         <!-- Leaflet js css -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="crossorigin=""/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,71 +27,53 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
-            #map { height: 900px; 
-                width:1600px; }
+            #map { height: 700px; 
+                width:1600px;
+            margin-left: 150px; }
         </style>
     </head>
+    @section('content')
     <body>
-        
-        <div>
-         <t>Cari Lokasi</t><br>
-         <select name="" id="" onchange="cari(this.value)">
-            <option value="">Pilih lokasi</option>
-            @foreach($stops as $s)
-            <option value="{{$s->id}}">{{$s->name}}</option>
-            @endforeach
-         </select>       
-        </div>
-
+        <!-- Munculin map -->
         <div id="map"></div><br>
         @if(!empty($successMsg))
          <div class="alert alert-success"> {{ $successMsg }}</div>
         @endif
-        <form action="/routes" method="GET">
-
-         <select name="awal" id="" required>
-            <option value="">Pilih start</option>
-            @foreach($stops as $s)
-            <option value="{{$s->name}}">{{$s->name}}</option>
-            @endforeach
-         </select>
-        
-         <select name="akhir" id="" required>
-            <option value="">Pilih tujuan</option>
-            @foreach($stops as $s)
-            <option value="{{$s->name}}">{{$s->name}}</option>
-            @endforeach
-         </select>
-        
-         <button type="submit">Cari rute</button>
-        </form>
-
-
+       
     </body>
+   
     <!-- Leaflet js  -->
     <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
-    <script type="text/javascript">
-        
+
+    <script>
+    //  Inisialisasi Peta   
      var map = L.map('map').setView([-6.935118, 107.766995], 15);
      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
          maxZoom: 19,
          attribution: '© OpenStreetMap'
      }).addTo(map);
 
+     //fitur menambahkan marker sesuai database
      function addMarker(lat, lng, place){
          L.marker([lat, lng]).addTo(map)
          .bindPopup(place);
      }
-     var coordinates = {{ Js::from($stops) }};
-        
+     var coordinates = <?php echo json_encode($stops); ?>;
      coordinates.forEach(function(item){
         addMarker(item.lat, item.lng, item.name);
      });
         
-     L.control.locate().addTo(map);
-     // Fitur click memunculkan coordinate
+     //Fitur melihat lokasi user
+     L.control.locate({
+        position: "topright",
+        animate:true,
+    }).addTo(map);
+
+
+     // Fitur click untuk memunculkan coordinate
      var popup = L.popup();
      function onMapClick(e) {
          popup
@@ -96,6 +81,7 @@
              .setContent("You clicked the map at " + e.latlng.toString())
              .openOn(map);
      }
+     //fitur melihat lokasi marker
      map.on('contextmenu', onMapClick);
      function cari(id){
         coordinates.forEach(function(item){
@@ -106,5 +92,10 @@
             });
          });
      }
+     //fitur routing
+     
 </script>
+@endsection
+
 </html>
+
