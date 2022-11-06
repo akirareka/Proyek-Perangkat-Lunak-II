@@ -45,20 +45,21 @@
      // fitur melihat lokasi user
      var lc = L.control.locate({
         strings : {
-            popup:"Fucking hell"}
+            popup:" Lokasi kamu di sini "}
         }).addTo(map);
-     var lcPopup = L.popup();
-     function fromCurLoc(e) {
-        var coords = e.latlng
-        lcPopup
-            .setLatLng(e.latlng)
-            .setContent("<button onclick ='return addStops("+coords.lat+","+coords.lng+")'>Mulai di sini</button><br>")
-            .openOn(map);
-    }
-        
-     lc.start();
-     map.on('click', fromCurLoc);
-     console.log(L.control.locate())
+        lc.start();
+
+    //  var lcPopup = L.popup();
+    //  function fromCurLoc(e) {
+    //     var coords = e.latlng
+    //     lcPopup
+    //         .setLatLng(e.latlng)
+    //         .setContent("<button onclick ='return dariSini("+coords.lat+","+coords.lng+")'>Mulai di sini</button><br>"+
+    //         "<button onclick ='return keSini("+coords.lat+","+coords.lng+")'>Pergi ke sini</button>"+
+    //         "<button onclick ='return addStops("+coords.lat+","+coords.lng+")'>Tambah pemberhentian</button><br>")
+    //         .openOn(map);
+    // }
+    //  map.on('click', fromCurLoc);
 
      // Fitur click kanan untuk memunculkan coordinate
      var popup = L.popup();
