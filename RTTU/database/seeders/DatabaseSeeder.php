@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             'lat' => "-6.900707",
             'lng' => "107.624155",
             'kendaraan' => "Bus"
-        ])
+        ]);
         Map::create([
             'name' => "Gereja GII Hok Im Tong Dago",
             'address' => "Jl. Cikapayang, Lb. Siliwangi, Kecamatan Coblong, Kota Bandung, Jawa Barat 40132",
