@@ -261,5 +261,92 @@ class DatabaseSeeder extends Seeder
             'lng' => "107.609295",
             'kendaraan' => "Shuttle"
         ]);
+        Map::create([
+            'name' => "Arnes Shuttle Jatinangor",
+            'address' => "Jl. Raya Bandung - Sumedang No.222, Hegarmanah, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363",
+            'lat' => "-6.933291997247869",
+            'lng' => "107.77404716183632",
+            'kendaraan' => "Shuttle"
+        ]);
+
+        Map::create([
+            'name' => "Arnes Shuttle Baltos",
+            'address' => "Baltos, Balubur Town Square, Jl. Tamansari No 2, Tamansari, Bandung Wetan, Bandung, Jawa Barat 40116",
+            'lat' => "-6.898462423135006",
+            'lng' => "107.60870726609858",
+            'kendaraan' => "Shuttle"
+        ]);
+
+        Map::create([
+            'name' => "Pasteur Trans Jatinangor",
+            'address' => "Jl. Kolonel Ahmad Syam, Cikeruh, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363",
+            'lat' => "-6.93352636359923",
+            'lng' => "107.7729832989932",
+            'kendaraan' => "Shuttle"
+        ]);
+
+        Map::create([
+            'name' => "Pasteur Trans Dipatiukur",
+            'address' => "Jl. Dipati Ukur No.100, Lebakgede, Kecamatan Coblong, Kota Bandung, Jawa Barat 40251",
+            'lat' => "-6.885135074631032",
+            'lng' => "107.61411453146928",
+            'kendaraan' => "Shuttle"
+        ]);
+
+        Map::create([
+            'name' => "Pasteur Trans Pasteur",
+            'address' => "Jl. Dr. Djunjunan No.77, Pajajaran, Kec. Cicendo, Kota Bandung, Jawa Barat 40161",
+            'lat' => "-6.896687518451819",
+            'lng' => "107.59075378348024",
+            'kendaraan' => "Shuttle"
+        ]);
+
+        Map::create([
+            'name' => "Krakaline Shuttle Jatinangor",
+            'address' => "Jl. Kol Achmad Syam No.19, Cikeruh, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363",
+            'lat' => "-6.934680818413035",
+            'lng' => "107.7733956488663",
+            'kendaraan' => "Shuttle"
+        ]);
+
+        Map::create([
+            'name' => "Krakaline Shuttle Buah Batu",
+            'address' => "Jl. Terusan Buah Batu sebrang No.213, Kujangsari, yomart, Kota Bandung, Jawa Barat 40287",
+            'lat' => "-6.959914584046392",
+            'lng' => "107.63928910075865",
+            'kendaraan' => "Shuttle"
+        ]); 
+
+        Map::create([
+            'name' => "Bhinneka Shuttle Point Jatinangor",
+            'address' => "Jl. Raya Jatinangor No.174, Hegarmanah, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363",
+            'lat' => "-6.932522072859319",
+            'lng' => "107.77597072562011",
+            'kendaraan' => "Shuttle"
+        ]);
+
+        Map::create([
+            'name' => "Bhinneka Shuttle Buah Batu",
+            'address' => "Jl. Terusan Buah Batu No.227, Kujangsari, Kec. Bandung Kidul, Kota Bandung, Jawa Barat 40287",
+            'lat' => "-6.960492198454588",
+            'lng' => "107.63918784984024",
+            'kendaraan' => "Shuttle"
+        ]);
+
+        Map::create([
+            'name' => "Sahabat Shuttle Jatinangor",
+            'address' => "Jl. Raya Jatinangor No.182, Cikeruh, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363",
+            'lat' => "-6.933222044984461",
+            'lng' => "107.77362501992167",
+            'kendaraan' => "Shuttle"
+        ]);
+
+        Map::create([
+            'name' => "Sahabat Shuttle Cihampelas",
+            'address' => "Jl. Cihampelas No.42e, Pasir Kaliki, Kec. Bandung Wetan, Kota Bandung, Jawa Barat 40116",
+            'lat' => "-6.903113113613176",
+            'lng' => "107.6045019810691",
+            'kendaraan' => "Shuttle"
+        ]);
     }
 }
