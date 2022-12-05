@@ -23,9 +23,7 @@
             </a>
         </div>
         <div class="content collapse navbar-collapse">
-            <a class=" nav-link" href="#">TENTANG KAMI</a>
-            <a class="nav-link" href="#transportasi">MODA TRANPORTASI</a>
-            <a class="nav-link" href="#">TUJUAN AKHIR</a>
+            <a style="margin-left:50% ;" class="nav-link" href="#transportasi">MODA TRANPORTASI</a>
         </div>
     </nav>
     @yield('content')
@@ -53,7 +51,7 @@
                 </center>
             </div>
         </div>
-            <section>
+            <section style="margin-top:2.5% ;">
                 <nav class="mid-RRTU">
                     <img src="{{ asset('img/RRTU.png') }}" alt=" ">
                 </nav>
@@ -97,20 +95,8 @@
             <p>Muhammad Hilmi Aufarahman </p>
             <p>Fadhillah Akbar Indrawan</p>
         </div>
-        <div class="col">
-            <h5>CUSTOMER CARE</h5>
-            <p>Akirareka Kinantan Jiraiya </p>
-            <p>Muhammad Hilmi Aufarahman </p>
-            <p>Fadhillah Akbar Indrawan</p>
-        </div>
-        <div class="col">
-            <h5>EXPLORE</h5>
-            <p>Akirareka Kinantan Jiraiya </p>
-            <p>Muhammad Hilmi Aufarahman </p>
-            <p>Fadhillah Akbar Indrawan</p>
-        </div>
-        <center>
-            <h1>ROUTE RECCOMENDATION TO UNPAD</h1>
+        <center style="margin-top:1% ;">
+            <h5>ROUTE RECCOMENDATION TO UNPAD</h1>
         </center>
     </footer>
 </body>

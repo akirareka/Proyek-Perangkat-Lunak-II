@@ -112,7 +112,9 @@ article {
 }
 
 .shuttel img {
-
+    height: 50%;
+    width: 50%;
+    margin-top: 10%;
 }
 
 .biskota img {
@@ -133,10 +135,10 @@ article {
 }
 
 footer p {
-    text-align: justify;
+    text-align: center;
     padding: 0;
     margin-bottom: 0;
-    margin-left: 40%;
+    /* margin-left:40%; */
     
 }
 

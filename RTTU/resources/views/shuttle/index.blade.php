@@ -35,9 +35,9 @@
     @section('content')
     <body onLoad="getLocation()">
         
-        <div>
+        <div style="margin-bottom:1% ; margin-left:2%; ">
          <t>Cari Halte</t><br>
-         <select name="" id="" onchange="cari(this.value)">
+         <select style="border-radius:5px;" name="" id="" onchange="cari(this.value)">
             <option value="">Pilih lokasi</option>
             @foreach($stops as $s)
             <option value="{{$s->id}}">{{$s->name}}</option>
@@ -45,7 +45,7 @@
          </select>       
         </div>
 
-        <div id="map"></div><br>
+        <div style="width:1200px ; height: 500px;"id="map"></div><br>
         @if(!empty($successMsg))
          <div class="alert alert-success"> {{ $successMsg }}</div>
         @endif
