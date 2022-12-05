@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
-use App\Models\Routes;
 use App\Models\Map;
 
 class DatabaseSeeder extends Seeder
@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('stops')->truncate();
+        
         Map::create([
             'name' => "DU",
             'address' => "Dipatiukur no bla bla",

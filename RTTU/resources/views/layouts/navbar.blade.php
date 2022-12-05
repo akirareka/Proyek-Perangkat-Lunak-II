@@ -18,13 +18,13 @@
 <body>
     <nav class="navbar navbar-expand-lg ">
         <div class="logo " style="margin-right : 40% ;">
-            <a class="navbar-brand LogoRRTU" href="#">
+            <a class="navbar-brand LogoRRTU" href="/">
                 <img src="{{ asset('img/RRTU.png') }}" alt=" " class="d-inline-block align-text-top">
             </a>
         </div>
         <div class="content collapse navbar-collapse">
             <a class=" nav-link" href="#">TENTANG KAMI</a>
-            <a class="nav-link" href="#">MODA TRANPORTASI</a>
+            <a class="nav-link" href="#transportasi">MODA TRANPORTASI</a>
             <a class="nav-link" href="#">TUJUAN AKHIR</a>
         </div>
     </nav>
@@ -32,11 +32,11 @@
     <center>
         
         <div class="">
-        <div class="box3-3 row">
+        <div class="box3-3 row" id="transportasi">
             <center>
                 <h1>METODE TRANSPORTASI</h1>
             </center>
-            <div class="shuttle col">
+            <div class="shuttle col" >
                 <img src="{{ asset('img/gambar_shuttle.png') }}" alt="">
                 <center>
                     <a href="/shuttle">

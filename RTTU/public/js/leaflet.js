@@ -96,11 +96,12 @@
             //  L.latLng(-6.933951, 107.771266)
             
         ],
+        routeWhileDragging: true,
         createMarker: function (i, wp, nWps){
            
             return L.marker(wp.latLng, {icon: new L.DivIcon({
                 html: 
-                    '<div> <img style="" src="https://unpkg.com/leaflet@1.9.2/dist/images/marker-icon.png"> <span style="font-size:200%;" >'+String.fromCharCode(65+i)+'</span> </div>'
+                    '<div> <img style="align:top;margin:-50px -10px" src="https://unpkg.com/leaflet@1.9.2/dist/images/marker-icon.png"> <span style="font-size:200%;" >'+String.fromCharCode(65+i)+'</span> </div>'
             }) });     
     },
         geocoder: L.Control.Geocoder.nominatim()
