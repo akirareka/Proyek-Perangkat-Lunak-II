@@ -11,11 +11,8 @@
 function showPosition(position) {
     curlat = position.coords.latitude;
     curlng = position.coords.longitude;
-    console.log( "Latitude: " + curlat + 
-"<br>Longitude: " + curlng)
+    alert("Pilih point terdekat yang ingin dituju");
 }
-console.log( "Latitude: " + curlat + 
-"<br>Longitude: " + curlng)
       
 
 var map = L.map('map').setView([-6.935118, 107.766995], 15);

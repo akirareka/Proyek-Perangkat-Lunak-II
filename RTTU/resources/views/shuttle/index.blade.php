@@ -14,12 +14,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
         <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
         <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-        <script type="text/javascript" src="{{ asset('js/leaflet.js') }}"></script>
-        <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="crossorigin=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
-    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-    <script>var coordinates = <?php echo json_encode($stops); ?>;</script>
 
 
         <!-- Fonts -->
@@ -39,7 +33,7 @@
         </style>
     </head>
     @section('content')
-    <body>
+    <body onLoad="getLocation()">
         
         <div>
          <t>Cari Halte</t><br>
@@ -57,15 +51,19 @@
         @endif
         
         <div>
-            <h1>Rute shuttle : Jatinangor <-> Pasteur (via Tol) <-> Baltos </h1>
+            <h1>Rute shuttle : Jatinangor <-> Pasteur (via Tol) <-> Pool Shuttle </h1>
         </div>
 
 
     </body>
    
     <!-- Leaflet js  -->
-    
-    
+    <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script>var coordinates = <?php echo json_encode($stops); ?>;</script>
+    <script type="text/javascript" src="{{ asset('js/leaflet.js') }}"></script>
            
 
     
