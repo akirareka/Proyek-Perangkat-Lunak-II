@@ -34,66 +34,8 @@
     </head>
     @section('content')
     <body>
-        <!-- Munculin map -->
-        <div id="map"></div><br>
-        @if(!empty($successMsg))
-         <div class="alert alert-success"> {{ $successMsg }}</div>
-        @endif
-       
     </body>
    
-    <!-- Leaflet js  -->
-    <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="crossorigin=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
-
-
-    <script>
-    //  Inisialisasi Peta   
-     var map = L.map('map').setView([-6.935118, 107.766995], 15);
-     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-         maxZoom: 19,
-         attribution: '© OpenStreetMap'
-     }).addTo(map);
-
-     //fitur menambahkan marker sesuai database
-     function addMarker(lat, lng, place){
-         L.marker([lat, lng]).addTo(map)
-         .bindPopup(place);
-     }
-     var coordinates = <?php echo json_encode($stops); ?>;
-     coordinates.forEach(function(item){
-        addMarker(item.lat, item.lng, item.name);
-     });
-        
-     //Fitur melihat lokasi user
-     L.control.locate({
-        position: "topright",
-        animate:true,
-    }).addTo(map);
-
-
-     // Fitur click untuk memunculkan coordinate
-     var popup = L.popup();
-     function onMapClick(e) {
-         popup
-             .setLatLng(e.latlng)
-             .setContent("You clicked the map at " + e.latlng.toString())
-             .openOn(map);
-     }
-     //fitur melihat lokasi marker
-     map.on('contextmenu', onMapClick);
-     function cari(id){
-        coordinates.forEach(function(item){
-         if(item.id == id)
-             map.flyTo([item.lat, item.lng], 18,{
-             animate:true,
-             duration:3
-            });
-         });
-     }
-     //fitur routing
-     
 </script>
 @endsection
 

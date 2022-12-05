@@ -1,4 +1,24 @@
- var map = L.map('map').setView([-6.935118, 107.766995], 15);
+ var curlat;
+ var curlng;
+     function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+    curlat = position.coords.latitude;
+    curlng = position.coords.longitude;
+    console.log( "Latitude: " + curlat + 
+"<br>Longitude: " + curlng)
+}
+console.log( "Latitude: " + curlat + 
+"<br>Longitude: " + curlng)
+      
+
+var map = L.map('map').setView([-6.935118, 107.766995], 15);
      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
          maxZoom: 19,
          attribution: '© OpenStreetMap'
@@ -12,27 +32,17 @@
          L.marker([lat, lng]).addTo(map)
          .bindPopup(
             "Nama : " + place + "<br>"+
-            "<button onclick ='return dariSini("+lat+","+lng+")'>Mulai di sini</button><br>"+
-         "<button onclick ='return keSini("+lat+","+lng+")'>Pergi ke sini</button>"+
-         "<button onclick ='return addStops("+lat+","+lng+")'>Tambah pemberhentian</button><br>"
+         "<button onclick ='dariSini(); return keSini("+lat+","+lng+");'>Pergi ke sini</button>"
          );
      }
      coordinates.forEach(function(item){
         addMarker(item.lat, item.lng, item.name);
      });
 
-     function dariSini(lat,lng){
-        var latLng=L.latLng(lat,lng);
+     function dariSini(){
+        console.log("fungsi kepanggil");
+        var latLng=L.latLng(curlat,curlng);
         control.spliceWaypoints(0, 1, latLng);
-
-     }
-
-     function addStops(lat,lng){
-        var i = 1;
-        var latLng=L.latLng(lat,lng);
-        control.spliceWaypoints(i, 0, latLng);
-        i+=1;
-        console.log(i)
 
      }
 
@@ -45,31 +55,26 @@
      // fitur melihat lokasi user
      var lc = L.control.locate({
         strings : {
-            popup:" Lokasi kamu di sini "}
+            popup:" Lokasi kamu di sini "},
+        locateOptions: {
+                enableHighAccuracy: true,
+                cacheLocation : false
+              }
         }).addTo(map);
         lc.start();
 
-    //  var lcPopup = L.popup();
-    //  function fromCurLoc(e) {
-    //     var coords = e.latlng
-    //     lcPopup
-    //         .setLatLng(e.latlng)
-    //         .setContent("<button onclick ='return dariSini("+coords.lat+","+coords.lng+")'>Mulai di sini</button><br>"+
-    //         "<button onclick ='return keSini("+coords.lat+","+coords.lng+")'>Pergi ke sini</button>"+
-    //         "<button onclick ='return addStops("+coords.lat+","+coords.lng+")'>Tambah pemberhentian</button><br>")
-    //         .openOn(map);
-    // }
-    //  map.on('click', fromCurLoc);
+        console.log();
+
 
      // Fitur click kanan untuk memunculkan coordinate
-     var popup = L.popup();
-     function onMapClick(e) {
-         popup
-             .setLatLng(e.latlng)
-             .setContent("You clicked the map at " + e.latlng.toString())
-             .openOn(map);
-     }
-     map.on('contextmenu', onMapClick);
+    //  var popup = L.popup();
+    //  function onMapClick(e) {
+    //      popup
+    //          .setLatLng(e.latlng)
+    //          .setContent("You clicked the map at " + e.latlng.toString())
+    //          .openOn(map);
+    //  }
+    //  map.on('contextmenu', onMapClick);
 
      //fitur melihat lokasi marker dari database
      
@@ -90,10 +95,11 @@
     }
     
      //fitur routing
+     
      var control = L.Routing.control({
         waypoints: [
-            // L.latLng(-6.936436, 107.765185),
-            //  L.latLng(-6.933951, 107.771266)
+             L.latLng(curlat, curlng)
+           
             
         ],
         routeWhileDragging: true,

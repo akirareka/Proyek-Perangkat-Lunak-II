@@ -19,31 +19,10 @@ class DatabaseSeeder extends Seeder
         DB::table('stops')->truncate();
         
         Map::create([
-            'name' => "DU",
-            'address' => "Dipatiukur no bla bla",
-            'lat' => "-6.892946",
-            'lng' => "107.618074",
-            'kendaraan' => "Bus"
-        ]);
-        Map::create([
-            'name' => "Jatos",
-            'address' => "Jatinangor bla bla",
-            'lat' => "-6.933951",
-            'lng' => "107.771266",
-            'kendaraan' => "Bus"
-        ]);
-        Map::create([
-            'name' => "Diponegoro RRI",
-            'address' => "Gedung Kantor RRI Bandung, Cihaur Geulis, Cibeunying Kaler, Bandung City, West Java 40122",
-            'lat' => "-6.900707",
-            'lng' => "107.624155",
-            'kendaraan' => "Bus"
-        ]);
-        Map::create([
-            'name' => "Gereja GII Hok Im Tong Dago",
-            'address' => "Jl. Cikapayang, Lb. Siliwangi, Kecamatan Coblong, Kota Bandung, Jawa Barat 40132",
-            'lat' => "-6.898668",
-            'lng' => "107.611939",
+            'name' => "Terminal Dipatiukur",
+            'address' => "",
+            'lat' => "-6.893492",
+            'lng' => "107.618088",
             'kendaraan' => "Bus"
         ]);
         Map::create([
@@ -102,20 +81,7 @@ class DatabaseSeeder extends Seeder
             'lng' => "107.609294",
             'kendaraan' => "Bus"
         ]);
-        Map::create([
-            'name' => "Simpang Cileuny Atas",
-            'address' => "Cileunyi, Cileunyi Wetan, Cileunyi, Bandung Regency, West Java 40622",
-            'lat' => "-6.937445",
-            'lng' => "107.756117",
-            'kendaraan' => "Bus"
-        ]);
-        Map::create([
-            'name' => "IPDN A",
-            'address' => "JL Raya Jatinangor, No. 230, Jatinangor, Cibeusi, Bandung, Kabupaten Sumedang, Jawa Barat 45363",
-            'lat' => "-6.935299",
-            'lng' => "107.765215",
-            'kendaraan' => "Bus"
-        ]);
+        
         Map::create([
             'name' => " Halte HDL 293 Citarum",
             'address' => "Citarum, Bandung Wetan, Bandung City, West Java",
@@ -207,13 +173,7 @@ class DatabaseSeeder extends Seeder
             'lng' => "107.75377",
             'kendaraan' => "Bus"
         ]);
-        Map::create([
-            'name' => "Halte Tugu Batas Kota Sumedang Bandung" ,
-            'address' => "Cileunyi Wetan, Cileunyi, Bandung Regency, West Java",
-            'lat' => "-6.937592",
-            'lng' => "107.75718",
-            'kendaraan' => "Bus"
-        ]);
+        
         Map::create([
             'name' => "Halte Tugu Perbatasan Bandung Sumedang" ,
             'address' => "Cibeusi, Jatinangor, Sumedang Regency, West Java",
@@ -228,13 +188,7 @@ class DatabaseSeeder extends Seeder
             'lng' => "107.76507",
             'kendaraan' => "Bus"
         ]);
-        Map::create([
-            'name' => "Halte Griya Jatinangor",
-            'address' => "Sayang, Jatinangor, Sumedang Regency, West Java",
-            'lat' => "-6.934667",
-            'lng' => "107.76835",
-            'kendaraan' => "Bus"
-        ]);
+        
         Map::create([
             'name' => "Halte Pangkalan Ojeg UNPAD",
             'address' => "Sayang, Jatinangor, Sumedang Regency, West Java",
@@ -245,24 +199,25 @@ class DatabaseSeeder extends Seeder
         Map::create([
             'name' => "Halte Pangkalan Bus Damri Jatinagor",
             'address' => "Cikeruh, Jatinangor, Sumedang Regency, West Java",
-            'lat' => "-6.9319198",
-            'lng' => "107.7731",
+            'lat' => "-6.932490",
+            'lng' => "107.772750",
             'kendaraan' => "Bus"
         ]);
         Map::create([
             'name' => "Halte Bus Damri Jatinangor",
             'address' => "Jl. Raya Cirebon - Bandung No.176, Cikeruh, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363",
-            'lat' => "-6.931423",
-            'lng' => "107.775768",
+            'lat' => "-6.931638",
+            'lng' => "107.775899",
             'kendaraan' => "Bus"
         ]);
         Map::create([
-            'name' => "Baltos",
-            'address' => "Jatinangor bla bla",
-            'lat' => "-6.898862",
-            'lng' => "107.609295",
-            'kendaraan' => "Shuttle"
+            'name' => "Pool Damri Dipatiukur",
+            'address' => "",
+            'lat' => "-6.892318",
+            'lng' => "107.617851",
+            'kendaraan' => "Bus"
         ]);
+        
         Map::create([
             'name' => "Arnes Shuttle Jatinangor",
             'address' => "Jl. Raya Bandung - Sumedang No.222, Hegarmanah, Kec. Jatinangor, Kabupaten Sumedang, Jawa Barat 45363",
